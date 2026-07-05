@@ -1,10 +1,12 @@
 package com.trivia2.data;
 
 import com.trivia2.entities.Game;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.UUID;
 
+@Service
 public class GameRepository {
     // An in-memory database.
     public HashMap<UUID, Game> OngoingGames;
@@ -23,6 +25,5 @@ public class GameRepository {
         } catch (Exception ex){
             throw new IllegalStateException("No game present");
         }
-
     }
 }

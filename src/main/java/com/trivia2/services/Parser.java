@@ -2,10 +2,12 @@ package com.trivia2.services;
 
 import com.trivia2.dto.QuestionAnswer;
 import com.trivia2.entities.Trivia;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class Parser {
     public Trivia Parse(QuestionAnswer trivia){
         List<String> AvailableAnswers = new ArrayList<>(trivia.incorrect_answers());
