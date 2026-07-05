@@ -9,10 +9,12 @@ import java.util.stream.Collectors;
 
 public class Game {
     private UUID gameId;
+    public GameState State;
     private final HashMap<String, Trivia> questions;
 
     public Game(){
         questions = new HashMap<>();
+        State = GameState.ACTIVE;
         gameId = UUID.randomUUID();
     }
 
@@ -30,8 +32,16 @@ public class Game {
         return new ArrayList<>(this.questions.values().stream().map(Trivia::getQuestion).toList());
     }
 
+    public GameSession GetGameSession(){
+        return new GameSession(gameId, getQuestions());
+    }
+
     public Trivia getQuestion(String question){
         return questions.get(question);
+    }
+
+    public void ChangeToSolved(){
+        State = GameState.SOLVED;
     }
 
     // Submit answers
@@ -51,6 +61,7 @@ public class Game {
                 gameResult.IncreaseInvalide();
             }
         }
+        ChangeToSolved();
         return gameResult;
     }
 }
