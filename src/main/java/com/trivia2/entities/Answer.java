@@ -1,4 +1,4 @@
 package com.trivia2.entities;
 
-public class Answer {
+public record Answer(String Question, String Answer){
 }

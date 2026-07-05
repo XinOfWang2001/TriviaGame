@@ -1,4 +1,6 @@
 package com.trivia2.entities;
 
-public class Question {
+import java.util.List;
+
+public record Question(String question, List<String> choices) {
 }
