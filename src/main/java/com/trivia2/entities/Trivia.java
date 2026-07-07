@@ -5,27 +5,24 @@ import java.util.List;
 
 public class Trivia {
     public String question;
-    public String CorrectAnswer;
-    public List<String> Choices;
+    public String correctAnswer;
+    public List<String> choices;
 
     public Trivia(String question, String CorrectAnswer, List<String> Choices){
         this.question = question;
-        this.CorrectAnswer = CorrectAnswer;
-        this.Choices = Choices;
+        this.correctAnswer = CorrectAnswer;
+        this.choices = Choices;
     }
 
-    public String getQuestionKey(){
-        return question;
-    }
 
     public Question getQuestion() {
-        return new Question(this.question, Choices);
+        return new Question(this.question, choices);
     }
 
     public boolean ValidateAnswer(Answer answer) throws InvalidAttributeValueException {
-        if (!Choices.contains(answer.Answer())){
+        if (!choices.contains(answer.answer())){
             throw new InvalidAttributeValueException("Invalid answer, because the answer is not selectable");
         }
-        return CorrectAnswer.contentEquals(answer.Answer());
+        return correctAnswer.contentEquals(answer.answer());
     }
 }

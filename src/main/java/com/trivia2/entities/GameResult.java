@@ -11,7 +11,7 @@ public class GameResult {
         correctlyAnswered = 0;
     }
 
-    public void IncreaseInvalide(){
+    public void IncreaseInvalid(){
         invalidAnswers++;
     }
     public void IncreaseCorrect(){
@@ -20,17 +20,5 @@ public class GameResult {
 
     public void IncreaseIncorrect(){
         incorrectlyAnswered++;
-    }
-
-    public int getCorrectlyAnswered() {
-        return correctlyAnswered;
-    }
-
-    public int getInvalidAnswers() {
-        return invalidAnswers;
-    }
-
-    public int getIncorrectlyAnswered() {
-        return incorrectlyAnswered;
     }
 }

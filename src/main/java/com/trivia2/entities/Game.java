@@ -1,20 +1,18 @@
 package com.trivia2.entities;
 
-import javax.management.InvalidAttributeValueException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class Game {
     private final UUID gameId;
-    public GameState State;
+    public GameState state;
     private final HashMap<String, Trivia> questions;
 
     public Game(){
         questions = new HashMap<>();
-        State = GameState.ACTIVE;
+        state = GameState.ACTIVE;
         gameId = UUID.randomUUID();
     }
 
@@ -36,12 +34,9 @@ public class Game {
         return new GameSession(gameId, getQuestions());
     }
 
-    public Trivia getQuestion(String question){
-        return questions.get(question);
-    }
 
     public void ChangeToSolved(){
-        State = GameState.SOLVED;
+        state = GameState.SOLVED;
     }
 
     // Submit answers
@@ -50,7 +45,7 @@ public class Game {
         // Start validating.
         for (Answer answer: answers) {
             try {
-                Trivia question = this.questions.get(answer.Question());
+                Trivia question = this.questions.get(answer.question());
                 boolean result = question.ValidateAnswer(answer);
                 if(result){
                     gameResult.IncreaseCorrect();
@@ -58,7 +53,7 @@ public class Game {
                 }
                 gameResult.IncreaseIncorrect();
             } catch (Exception value){
-                gameResult.IncreaseInvalide();
+                gameResult.IncreaseInvalid();
             }
         }
         ChangeToSolved();
