@@ -8,7 +8,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class Game {
-    private UUID gameId;
+    private final UUID gameId;
     public GameState State;
     private final HashMap<String, Trivia> questions;
 
