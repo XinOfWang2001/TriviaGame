@@ -20,9 +20,9 @@ public class Game {
         return gameId;
     }
 
-    public void setQuestions(List<Trivia> trivias) {
-        for (Trivia trivia:trivias) {
-            this.questions.put(trivia.question, trivia);
+    public void setQuestions(List<Trivia> trivia) {
+        for (Trivia trivial:trivia) {
+            this.questions.put(trivial.question, trivial);
         }
     }
 
@@ -46,8 +46,7 @@ public class Game {
         for (Answer answer: answers) {
             try {
                 Trivia question = this.questions.get(answer.question());
-                boolean result = question.ValidateAnswer(answer);
-                if(result){
+                if(question.ValidateAnswer(answer)){
                     gameResult.IncreaseCorrect();
                     continue;
                 }
