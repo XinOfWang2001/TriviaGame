@@ -7,6 +7,7 @@ import com.trivia2.services.implementation.GameService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 public class GameController {
 
@@ -21,16 +22,19 @@ public class GameController {
         return "Positive";
     }
 
+    @CrossOrigin
     @GetMapping("/game")
     public ResponseEntity<GameSession> GetResult(@RequestParam(defaultValue="5") int amount){
         try {
+            System.out.println("Request game");
             return ResponseEntity.ok(gameService.CreateGame(amount));
         } catch (Exception exception){
             return ResponseEntity.badRequest().build();
         }
     }
 
-    @PutMapping("/game/solve")
+    @CrossOrigin
+    @PostMapping("/game/solve")
     public ResponseEntity<GameResult> SolveQuestions(@RequestBody AnswerDTO body){
         try {
             System.out.println("Triggered this endpoint.");
