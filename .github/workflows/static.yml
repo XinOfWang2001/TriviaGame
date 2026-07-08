@@ -45,7 +45,9 @@ jobs:
         
       - name: Build
         env:
-          VITE_BACKEND_API: ${{ env.VITE_BACKEND_API }}
+          # VITE_BACKEND_API: ${{ env.VITE_BACKEND_API }}
+          VITE_BACKEND_API: ${{ vars.VITE_BACKEND_API }}
+          # VITE_BACKEND_API: ${{ secrets.VITE_BACKEND_API }}
         run: npm run build
         
       - name: Setup Pages
