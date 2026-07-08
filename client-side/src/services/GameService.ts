@@ -56,7 +56,7 @@ export class GameService {
         const postAnswerDTO = new PostAnswerDTO(game.gameId, answers);
 
         const response = await fetch(`${this.apiUrl}/game/solve`, {
-            method: "POST",
+            method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(postAnswerDTO),
         });

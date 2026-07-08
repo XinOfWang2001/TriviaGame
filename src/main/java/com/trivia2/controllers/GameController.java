@@ -34,7 +34,7 @@ public class GameController {
     }
 
     @CrossOrigin
-    @PostMapping("/game/solve")
+    @PutMapping("/game/solve")
     public ResponseEntity<GameResult> SolveQuestions(@RequestBody AnswerDTO body){
         try {
             System.out.println("Triggered this endpoint.");

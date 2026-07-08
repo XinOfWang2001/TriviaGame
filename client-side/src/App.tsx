@@ -5,9 +5,12 @@ import { Game } from './entities/Game'
 import { Question } from './entities/Question'
 import { ShowModal } from './ResultModal'
 import type { ResultDTO } from './dto/ResultDTO'
-import { GameService } from './services/GameService'
+import { GameService } from './services/GameService';
+
 
 function App() {
+  const API_BACKEND: string = import.meta.env.VITE_BACKEND_API;
+  console.log('API endpoint:', API_BACKEND);
   const [game, setGame] = useState<Game | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [resetting, setResetting] = useState(false);
@@ -15,7 +18,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [result, setResult] = useState<ResultDTO | null>(null);
 
-  const gameService = useRef(new GameService());
+  const gameService = useRef(new GameService(API_BACKEND));
   const hasFetched = useRef(false);
 
   useEffect(() => {
