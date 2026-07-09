@@ -7,5 +7,6 @@ import java.util.UUID;
 public interface IGameRepository {
     void CreateGame(Game game);
 
-    Game GrabGame(UUID gameId);
+    Game Get(UUID gameId);
+    void Update(Game game);
 }

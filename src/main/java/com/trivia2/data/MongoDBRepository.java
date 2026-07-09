@@ -7,6 +7,8 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.trivia2.data.document.GameModel;
 import com.trivia2.entities.Game;
+import com.trivia2.entities.Question;
+import com.trivia2.entities.Trivia;
 import com.trivia2.services.abstraction.IGameRepository;
 import org.springframework.stereotype.Component;
 
@@ -30,9 +32,15 @@ public class MongoDBRepository implements IGameRepository {
     }
 
     @Override
-    public Game GrabGame(UUID gameId) {
+    public Game Get(UUID gameId) {
         GameModel haik = games.find(Filters.eq("_id", gameId)).first();
         assert haik != null;
         return new Game(haik._id, haik.gameState, haik.questions);
+    }
+
+    @Override
+    public void Update(Game game) {
+        GameModel model = new GameModel(new ArrayList<>(), game.getTrivia(), game.state, game.getGameId());
+        games.replaceOne(Filters.eq("_id", model._id), model);
     }
 }

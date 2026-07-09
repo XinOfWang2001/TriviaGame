@@ -22,11 +22,16 @@ public class InMemoryGameRepository implements IGameRepository {
     }
 
     @Override
-    public Game GrabGame(UUID gameId){
+    public Game Get(UUID gameId){
         try {
             return OngoingGames.get(gameId);
         } catch (Exception ex){
             throw new IllegalStateException("No game present");
         }
+    }
+
+    @Override
+    public void Update(Game game) {
+
     }
 }

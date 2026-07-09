@@ -33,9 +33,10 @@ public class GameService {
     }
 
     public GameResult PostAnswers(UUID gameId, List<Answer> answers){
-        System.out.println(gameId);
-        Game ongoingGame = gameRepository.GrabGame(gameId);
+        Game ongoingGame = gameRepository.Get(gameId);
+        GameResult result = ongoingGame.SubmitAnswers(answers);
+        gameRepository.Update(ongoingGame);
         // Change status in game repository.
-        return ongoingGame.SubmitAnswers(answers);
+        return result;
     }
 }
