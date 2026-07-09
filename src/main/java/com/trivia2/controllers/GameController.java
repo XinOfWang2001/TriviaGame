@@ -4,8 +4,11 @@ import com.trivia2.dto.AnswerDTO;
 import com.trivia2.entities.GameResult;
 import com.trivia2.entities.GameSession;
 import com.trivia2.services.implementation.GameService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -19,6 +22,10 @@ public class GameController {
 
     @GetMapping("/")
     public String Health(){
+        Map<String, String> env = System.getenv();
+        String v = env.get("MONGO_DB_CLUSTER");
+        System.out.println(v);
+
         return "Positive";
     }
 

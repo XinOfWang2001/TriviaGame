@@ -7,6 +7,7 @@ build/
 
 ### JavaScript modules related
 node_modules
+*env
 
 ### STS ###
 .apt_generated
