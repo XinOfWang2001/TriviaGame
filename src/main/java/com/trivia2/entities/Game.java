@@ -16,6 +16,13 @@ public class Game {
         gameId = UUID.randomUUID();
     }
 
+    public Game(UUID id, GameState state, List<Trivia> trivia){
+        gameId = id;
+        this.state = state;
+        this.questions = new HashMap<>();
+        setQuestions(trivia);
+    }
+
     public UUID getGameId() {
         return gameId;
     }
@@ -24,6 +31,10 @@ public class Game {
         for (Trivia trivial:trivia) {
             this.questions.put(trivial.question, trivial);
         }
+    }
+
+    public List<Trivia> getTrivia(){
+        return this.questions.values().stream().toList();
     }
 
     public List<Question> getQuestions(){

@@ -18,7 +18,7 @@ public class GameService {
     private final IGameRepository gameRepository;
     private final TriviaAPI triviaAPI;
 
-    public GameService(@Qualifier("in-memory-games") IGameRepository gameRepository, TriviaAPI triviaAPI){
+    public GameService(@Qualifier("mongo-games") IGameRepository gameRepository, TriviaAPI triviaAPI){
         this.gameRepository = gameRepository;
         this.triviaAPI = triviaAPI;
     }
