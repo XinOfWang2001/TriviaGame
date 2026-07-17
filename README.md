@@ -7,7 +7,7 @@ Een eenvoudige trivia-applicatie met een Java Spring Boot backend en een Svelte 
 - Backend: Java 21, Spring Boot 4.1
 - Externe vraagbron: Open Trivia Database (`https://opentdb.com/`)
 - Opslag: tijdelijk in een in-memory repository
-- UI: Svelte (separate client-side project)
+- UI: React voor het bespelen van het spel
 
 ## Architectuur
 
